@@ -2,34 +2,32 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>파일 목록 출력 예제</title>
+  <title>파일 목록</title>
 </head>
 
 <body>
-  <div id="fileList"></div>
-
+  <h1>파일 목록</h1>
+  <ul id="file-list"></ul>
   <script>
-    // 현재 폴더 내부의 파일 리스트를 가져와서 출력하는 함수
-    function showFileList() {
-      // 파일 리스트를 출력할 div 요소
-      const fileList = document.getElementById('fileList');
+    // 폴더 안의 파일 목록을 가져와서 출력하는 코드
+    fetch('./files')
+      .then(response => response.text())
+      .then(data => {
+        // 폴더 안의 파일 목록을 배열로 변환
+        const files = data.split('\n').filter(file => file.trim() !== '');
 
-      // 파일 리스트를 가져올 FileReader 객체 생성
-      const fileReader = new FileReader();
-
-      // 현재 폴더 내부의 파일 리스트를 가져올 함수
-      fileReader.onload = function (event) {
-        // 가져온 파일 리스트를 출력
-        fileList.innerHTML = event.target.result;
-      };
-
-      // 현재 폴더 내부의 파일 리스트를 가져옴
-      fileReader.readAsText(new Blob(["."], { type: "text/plain" }));
-    }
-
-    // 페이지가 로드되면 파일 리스트를 출력
-    window.onload = showFileList;
+        // 파일 목록을 출력
+        const fileList = document.getElementById('file-list');
+        files.forEach(file => {
+          const listItem = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = `./files/${file}`;
+          link.innerText = file;
+          listItem.appendChild(link);
+          fileList.appendChild(listItem);
+        });
+      })
+      .catch(error => console.error(error));
   </script>
 </body>
 
