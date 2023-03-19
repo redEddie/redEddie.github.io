@@ -12,17 +12,17 @@ def create_index_html(folder_path):
         f.write("<ul>\n")
         for root, dirs, files in os.walk(folder_path):
             level = root.replace(folder_path, '').count(os.sep)
-            indent = "&emsp;" * 4 * (level)
+            indent = "&emsp;" * 4 * (level)  # emsp가 여기있음.
             if level == 0:
                 parent_dir = os.path.dirname(os.path.abspath(folder_path))
                 f.write('<li><a href="{}">../</a></li>\n'.format(parent_dir))
             else:
-                f.write('{}<li>{}</li>\n'.format(indent, os.path.basename(root)))
+                f.write('<li>{}{}</li>\n'.format(indent, os.path.basename(root)))
             subindent = "&emsp;" * 4 * (level + 1)
             for file in files:
                 file_path = os.path.join(root, file)
                 f.write(
-                    '{}<li><a href="{}">{}</a></li>\n'.format(subindent, file_path, file))
+                    '<li>{}<a href="{}">{}</a></li>\n'.format(subindent, file_path, file))
         f.write("</ul>\n")
         f.write("</body>\n")
         f.write("</html>")
