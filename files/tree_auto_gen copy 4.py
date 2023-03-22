@@ -39,7 +39,7 @@ add_css(html)
 html += "</css>"
 
 # 파일트리 만들기 시작
-startpath = "./"
+startpath = "../"
 exclude_this_files = ".DS_Store"
 html = list_files(html, startpath, exclude_this_files)
 # print(html)

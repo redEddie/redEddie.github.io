@@ -49,5 +49,5 @@ def create_index_html(folder_path):
     print("index.html created at", os.path.abspath(folder_path))
 
 
-folder_path = "./"
+folder_path = "./files/"
 create_index_html(folder_path)
