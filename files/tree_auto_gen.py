@@ -1,24 +1,6 @@
+import datetime
 import os
 from html import escape
-
-
-def add_css(html, startpath):
-    html = html
-    # css를 추가하는 함수 for toggle
-    print("씨발")
-    html += "씨발씨발씨발씨발씨발씨발씨발"
-    for root, dirs, files in os.walk(startpath):
-        html += "===========1==========\n"
-
-        level = root.replace(startpath, '').count(os.sep)
-        k = 0
-        for file in files:
-            print("test{}".format(k))
-            html += "hihi\n"
-            html += "#toggle-folder-{}-{} {{cursor: pointer; font-weight: bold; text-decoration: underline;}}".format(
-                level, k)
-            k += 1
-    return html
 
 
 def list_files(html, startpath, exclude_this_files):
@@ -26,12 +8,12 @@ def list_files(html, startpath, exclude_this_files):
     폴더 내의 모든 파일을 트리 형식으로 출력하는 함수
     """
     html = html
-    html += "<ul>\n"
+    html += "<ul>"
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
         indent = "&nbsp;&nbsp;" * 4 * level
-        html += "<div>{}{}{}/</div>\n".format(indent,
-                                              "&#x1F4C1;&nbsp;", escape(os.path.basename(root)))
+        html += "<div>{}{}{}/</div>".format(indent,
+                                            "&#x1F4C1;&nbsp;", escape(os.path.basename(root)))
         # 파일은 제외할 키워드가 포함되면 html리스트에 표시되지 않음.
         subindent = "&nbsp;&nbsp;" * 4 * (level + 1)
         for file in files:
@@ -39,27 +21,49 @@ def list_files(html, startpath, exclude_this_files):
                 if key in file:
                     continue
                 else:
-                    html += "<div>{}{}{}</div>\n".format(subindent,
-                                                         "&#x1F4C4;&nbsp;", escape(file))
-    html += "</ul>\n"
+                    html += "<div>{}{}{}</div>".format(subindent,
+                                                       "&#x1F4C4;&nbsp;", escape(file))
+    html += "</ul>"
     return html
 
 
+def add_css(html, startpath):
+    # css를 추가하는 함수 for toggle
+    css = ""
+    l = 0
+    for root, dirs, files in os.walk(startpath):
+        level = root.replace(startpath, '').count(os.sep)
+        k = 0
+        for file in files:
+            css += "#toggle-folder-{}-{} {{cursor: pointer; font-weight: bold; text-decoration: underline;}}\n".format(
+                l, k)
+            k += 1
+            # print(str(k) + css)
+        l += 1
+    htmlandcss = html
+    htmlandcss += css
+    print(htmlandcss)
+    print("======== css done =========")
+    return htmlandcss
+
+
+print("========{}=======".format(datetime.datetime.now()))
 # main starts
-html = "<html>\n"
+html = "<html>"
 
 # 파일트리 시작점, 생성점 지정
 startpath = "./files/"
 exclude_this_files = [".DS_Store"]
 
+
 # css 추가
-html += "<css>\n"
+html += "<style>"
 add_css(html, startpath)
-html += "</css>\n"
+html += "</style>"
 # 본문
-html += "<body>\n"
+html += "<body>"
 html = list_files(html, startpath, exclude_this_files)
-html += "</body>\n"
+html += "</body>"
 
 # main ended
 html += "</html>"
