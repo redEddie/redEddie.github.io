@@ -13,14 +13,13 @@ def list_files(html, startpath, exclude_this_files):
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
         indent = "&nbsp;&nbsp;" * 4 * level
-        html += '<div id = "{}" > {}{}{}/</div>\n'.format("toggle-folder-"+str(l), indent,
-                                                          "&#x1F4C1;&nbsp;", escape(os.path.basename(root)))
-        l += 1
+        html += '<div id = "toggle_folder_{}" > {}{}{}/</div>\n'.format(l, indent,
+                                                                        "&#x1F4C1;&nbsp;", escape(os.path.basename(root)))
         # 파일은 제외할 키워드가 포함되면 html리스트에 표시되지 않음.
         subindent = "&nbsp;&nbsp;" * 4 * (level + 1)
-        k = 0
-        html += '<div id = "{}" style="display:none;">\n'.format(
-                "folder-content-"+str(k))
+        # k = 0
+        html += '<div id = "folder_content_{}" style="display:none;">\n'.format(
+                l)
         for file in files:
             for key in exclude_this_files:
                 if key in file:
@@ -35,8 +34,9 @@ def list_files(html, startpath, exclude_this_files):
                     html += '{}{}{}\n'.format(subindent,
                                               "&#x1F4C4;&nbsp;", escape(file))
                     html += '</a> </br>'
-            k += 1
+            # k += 1
         html += '</div>\n'
+        l += 1
     html += "</ul>"
     return html
 
@@ -47,7 +47,7 @@ def add_css(main_text, startpath):
     l = 0
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
-        add_css += "#toggle-folder-{} {{cursor: pointer; font-weight: bold; text-decoration: underline;}}\n".format(
+        add_css += "#toggle_folder_{} {{cursor: pointer; font_weight: bold; text_decoration: underline;}}\n".format(
             l)
         l += 1
     css_in_text = main_text
@@ -59,39 +59,24 @@ def add_css(main_text, startpath):
 
 
 def add_script(html, startpath):
-    '''
+    html = html
+    l = 0
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
-        indent = "&nbsp;&nbsp;" * 4 * level
-        html += ''
+        html += 'var toggleFolder_{} = document.getElementById("toggle_folder_{}");\n'.format(
+            l, l)
+        html += 'var folderContent_{} = document.getElementById("folder_content_{}");\n'.format(
+                l, l)
+        html += 'toggleFolder_{}.addEventListener("click", function() {}\n'.format(
+            l, "{")
+        html += 'if (folderContent_{}.style.display === "none") {}\n'.format(l, "{")
+        html += 'folderContent_{}.style.display = "block"\n'.format(l)
+        html += '}\n'
+        html += 'else {\n'
+        html += 'folderContent_{}.style.display = "none"\n'.format(l)
+        html += '}\n'
+        html += '});\n'
         l += 1
-        k = 0
-        for file in files:
-            for key in exclude_this_files:
-            k += 1
-
-    html = html
-    #  Get the toggle-folder element
-    html += 'var toggleFolder = document.getElementById("toggle-folder")\n'
-
-    #  Get the folder-content element
-    html += 'var folderContent = document.getElementById("folder-content")\n'
-
-    # Add an event listener for the toggle-folder element
-
-    html += 'toggleFolder.addEventListener("click", function() { \n'
-
-    #  If the folder-content element is hidden, show it
-    html += 'if (folderContent.style.display == = "none") {\n'
-    html += 'folderContent.style.display = "block"\n'
-    html += '}\n'
-
-    #  If the folder-content element is visible, hide it
-    html += 'else {\n'
-    html += 'folderContent.style.display = "none"\n'
-    html += '}\n'
-    html += '})\n'
-'''
 
     return html
 
@@ -113,6 +98,10 @@ main_text += "</style>"
 main_text += "<body>"
 main_text = list_files(main_text, startpath, exclude_this_files)
 main_text += "</body>"
+# javascript 추가
+main_text += "<script>"
+main_text = add_script(main_text, startpath)
+main_text += "</script>"
 
 # main ended
 main_text += "</html>"
@@ -130,19 +119,19 @@ print("===========================")
 
 
 '''
-// Get the toggle-folder element
-var toggleFolder = document.getElementById("toggle-folder");
+// Get the toggle_folder element
+var toggleFolder = document.getElementById("toggle_folder");
 
-// Get the folder-content element
-var folderContent = document.getElementById("folder-content");
+// Get the folder_content element
+var folderContent = document.getElementById("folder_content");
 
-// Add an event listener for the toggle-folder element
+// Add an event listener for the toggle_folder element
 toggleFolder.addEventListener("click", function() {
-    // If the folder-content element is hidden, show it
+    // If the folder_content element is hidden, show it
     if (folderContent.style.display === "none") {
         folderContent.style.display = "block";
     }
-    // If the folder-content element is visible, hide it
+    // If the folder_content element is visible, hide it
     else {
         folderContent.style.display = "none";
     }
@@ -152,21 +141,21 @@ toggleFolder.addEventListener("click", function() {
 
 '''
 <script>
-    // Get all elements with the toggle-folder class
-    var toggleFolders = document.querySelectorAll(".toggle-folder");
+    // Get all elements with the toggle_folder class
+    var toggleFolders = document.querySelectorAll(".toggle_folder");
 
-    // Add event listeners to all toggle-folder elements
+    // Add event listeners to all toggle_folder elements
     toggleFolders.forEach(function (toggleFolder) {
-        // Get the next sibling element with the folder-content class
+        // Get the next sibling element with the folder_content class
         var folderContent = toggleFolder.nextElementSibling;
 
-        // Add an event listener for the toggle-folder element
+        // Add an event listener for the toggle_folder element
         toggleFolder.addEventListener("click", function () {
-            // If the folder-content element is hidden, show it
+            // If the folder_content element is hidden, show it
             if (folderContent.style.display === "none") {
                 folderContent.style.display = "block";
             }
-            // If the folder-content element is visible, hide it
+            // If the folder_content element is visible, hide it
             else {
                 folderContent.style.display = "none";
             }

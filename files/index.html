@@ -1,80 +1,143 @@
-<html>
-<style>
-    #toggle-folder-0 {
-        cursor: pointer;
-        font-weight: bold;
-        text-decoration: underline;
-    }
-
-    #toggle-folder-1 {
-        cursor: pointer;
-        font-weight: bold;
-        text-decoration: underline;
-    }
-
-    #toggle-folder-2 {
-        cursor: pointer;
-        font-weight: bold;
-        text-decoration: underline;
-    }
-</style>
-
-<body>
-    <ul>
-        <div id="toggle-folder-0"> &#x1F4C1;&nbsp;/</div>
-        <div id="folder-content-0" style="display:none;">
-            <a href="./tree_auto_gen copy 2.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
-                copy 2.py
-            </a> </br><a href="./index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;index.html
-            </a> </br><a
-                href="./tree_auto_gen copy 3.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
-                copy 3.py
-            </a> </br><a href="./test.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test.py
-            </a> </br><a
-                href="./tree_auto_gen.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen.py
-            </a> </br><a href="./autu_gen.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;autu_gen.py
-            </a> </br><a
-                href="./tree_auto_gen copy.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
-                copy.py
-            </a> </br><a
-                href="./tree_auto_gen copy 4.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
-                copy 4.py
-            </a> </br>
-        </div>
-        <div id="toggle-folder-1"> &#x1F4C1;&nbsp;test folder/</div>
-        <div id="folder-content-0" style="display:none;">
-            <a href="./test folder/in folder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;in folder
-            </a> </br><a href="./test folder/test">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test
-            </a> </br><a
-                href="./test folder/test.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test.html
-            </a> </br>
-        </div>
-        <div id="toggle-folder-2"> &#x1F4C1;&nbsp;.ipynb_checkpoints/</div>
-        <div id="folder-content-0" style="display:none;">
-        </div>
-    </ul>
-</body>
-<script>
-    // Get all elements with the toggle-folder class
-    var toggleFolders = document.querySelectorAll(".toggle-folder");
-
-    // Add event listeners to all toggle-folder elements
-    toggleFolders.forEach(function (toggleFolder) {
-        // Get the next sibling element with the folder-content class
-        var folderContent = toggleFolder.nextElementSibling;
-
-        // Add an event listener for the toggle-folder element
-        toggleFolder.addEventListener("click", function () {
-            // If the folder-content element is hidden, show it
-            if (folderContent.style.display === "none") {
-                folderContent.style.display = "block";
-            }
-            // If the folder-content element is visible, hide it
-            else {
-                folderContent.style.display = "none";
-            }
-        });
-    });
-</script>
-
-</html>
+<html><style>#toggle_folder_0 {cursor: pointer; font_weight: bold; text_decoration: underline;}
+#toggle_folder_1 {cursor: pointer; font_weight: bold; text_decoration: underline;}
+#toggle_folder_2 {cursor: pointer; font_weight: bold; text_decoration: underline;}
+#toggle_folder_3 {cursor: pointer; font_weight: bold; text_decoration: underline;}
+#toggle_folder_4 {cursor: pointer; font_weight: bold; text_decoration: underline;}
+#toggle_folder_5 {cursor: pointer; font_weight: bold; text_decoration: underline;}
+#toggle_folder_6 {cursor: pointer; font_weight: bold; text_decoration: underline;}
+#toggle_folder_7 {cursor: pointer; font_weight: bold; text_decoration: underline;}
+#toggle_folder_8 {cursor: pointer; font_weight: bold; text_decoration: underline;}
+</style><body><ul><div id = "toggle_folder_0" > &#x1F4C1;&nbsp;/</div>
+<div id = "folder_content_0" style="display:none;">
+<a href = "./tree_auto_gen copy 2.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen copy 2.py
+</a> </br><a href = "./index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;index.html
+</a> </br><a href = "./tree_auto_gen copy 3.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen copy 3.py
+</a> </br><a href = "./test.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test.py
+</a> </br><a href = "./tree_auto_gen.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen.py
+</a> </br><a href = "./autu_gen.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;autu_gen.py
+</a> </br><a href = "./tree_auto_gen copy.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen copy.py
+</a> </br><a href = "./tree_auto_gen copy 4.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen copy 4.py
+</a> </br></div>
+<div id = "toggle_folder_1" > &#x1F4C1;&nbsp;test folder copy/</div>
+<div id = "folder_content_1" style="display:none;">
+<a href = "./test folder copy/in folder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;in folder
+</a> </br><a href = "./test folder copy/test">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test
+</a> </br><a href = "./test folder copy/test.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test.html
+</a> </br></div>
+<div id = "toggle_folder_2" > &#x1F4C1;&nbsp;test folder/</div>
+<div id = "folder_content_2" style="display:none;">
+<a href = "./test folder/in folder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;in folder
+</a> </br><a href = "./test folder/test">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test
+</a> </br><a href = "./test folder/test.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test.html
+</a> </br></div>
+<div id = "toggle_folder_3" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C1;&nbsp;in copy/</div>
+<div id = "folder_content_3" style="display:none;">
+<a href = "./in copy/t">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;t
+</a> </br></div>
+<div id = "toggle_folder_4" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C1;&nbsp;in/</div>
+<div id = "folder_content_4" style="display:none;">
+<a href = "./in/t">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;t
+</a> </br></div>
+<div id = "toggle_folder_5" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C1;&nbsp;in/</div>
+<div id = "folder_content_5" style="display:none;">
+</div>
+<div id = "toggle_folder_6" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C1;&nbsp;in copy 2/</div>
+<div id = "folder_content_6" style="display:none;">
+</div>
+<div id = "toggle_folder_7" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C1;&nbsp;in/</div>
+<div id = "folder_content_7" style="display:none;">
+</div>
+<div id = "toggle_folder_8" > &#x1F4C1;&nbsp;.ipynb_checkpoints/</div>
+<div id = "folder_content_8" style="display:none;">
+</div>
+</ul></body><script>var toggleFolder_0 = document.getElementById("toggle_folder_0");
+var folderContent_0 = document.getElementById("folder_content_0");
+toggleFolder_0.addEventListener("click", function() {
+if (folderContent_0.style.display === "none") {
+folderContent_0.style.display = "block"
+}
+else {
+folderContent_0.style.display = "none"
+}
+});
+var toggleFolder_1 = document.getElementById("toggle_folder_1");
+var folderContent_1 = document.getElementById("folder_content_1");
+toggleFolder_1.addEventListener("click", function() {
+if (folderContent_1.style.display === "none") {
+folderContent_1.style.display = "block"
+}
+else {
+folderContent_1.style.display = "none"
+}
+});
+var toggleFolder_2 = document.getElementById("toggle_folder_2");
+var folderContent_2 = document.getElementById("folder_content_2");
+toggleFolder_2.addEventListener("click", function() {
+if (folderContent_2.style.display === "none") {
+folderContent_2.style.display = "block"
+}
+else {
+folderContent_2.style.display = "none"
+}
+});
+var toggleFolder_3 = document.getElementById("toggle_folder_3");
+var folderContent_3 = document.getElementById("folder_content_3");
+toggleFolder_3.addEventListener("click", function() {
+if (folderContent_3.style.display === "none") {
+folderContent_3.style.display = "block"
+}
+else {
+folderContent_3.style.display = "none"
+}
+});
+var toggleFolder_4 = document.getElementById("toggle_folder_4");
+var folderContent_4 = document.getElementById("folder_content_4");
+toggleFolder_4.addEventListener("click", function() {
+if (folderContent_4.style.display === "none") {
+folderContent_4.style.display = "block"
+}
+else {
+folderContent_4.style.display = "none"
+}
+});
+var toggleFolder_5 = document.getElementById("toggle_folder_5");
+var folderContent_5 = document.getElementById("folder_content_5");
+toggleFolder_5.addEventListener("click", function() {
+if (folderContent_5.style.display === "none") {
+folderContent_5.style.display = "block"
+}
+else {
+folderContent_5.style.display = "none"
+}
+});
+var toggleFolder_6 = document.getElementById("toggle_folder_6");
+var folderContent_6 = document.getElementById("folder_content_6");
+toggleFolder_6.addEventListener("click", function() {
+if (folderContent_6.style.display === "none") {
+folderContent_6.style.display = "block"
+}
+else {
+folderContent_6.style.display = "none"
+}
+});
+var toggleFolder_7 = document.getElementById("toggle_folder_7");
+var folderContent_7 = document.getElementById("folder_content_7");
+toggleFolder_7.addEventListener("click", function() {
+if (folderContent_7.style.display === "none") {
+folderContent_7.style.display = "block"
+}
+else {
+folderContent_7.style.display = "none"
+}
+});
+var toggleFolder_8 = document.getElementById("toggle_folder_8");
+var folderContent_8 = document.getElementById("folder_content_8");
+toggleFolder_8.addEventListener("click", function() {
+if (folderContent_8.style.display === "none") {
+folderContent_8.style.display = "block"
+}
+else {
+folderContent_8.style.display = "none"
+}
+});
+</script></html>
