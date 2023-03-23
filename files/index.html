@@ -22,37 +22,59 @@
 <body>
     <ul>
         <div id="toggle-folder-0"> &#x1F4C1;&nbsp;/</div>
-        <div id="folder-content-0" style="display:block;">
-            <a href="tree_auto_gen copy 2.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
+        <div id="folder-content-0" style="display:none;">
+            <a href="./tree_auto_gen copy 2.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
                 copy 2.py
-            </a> </br><a href="index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;index.html
+            </a> </br><a href="./index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;index.html
             </a> </br><a
-                href="tree_auto_gen copy 3.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
+                href="./tree_auto_gen copy 3.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
                 copy 3.py
-            </a> </br><a href="test.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test.py
+            </a> </br><a href="./test.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test.py
             </a> </br><a
-                href="tree_auto_gen.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen.py
-            </a> </br><a href="autu_gen.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;autu_gen.py
+                href="./tree_auto_gen.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen.py
+            </a> </br><a href="./autu_gen.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;autu_gen.py
             </a> </br><a
-                href="tree_auto_gen copy.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
+                href="./tree_auto_gen copy.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
                 copy.py
             </a> </br><a
-                href="tree_auto_gen copy 4.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
+                href="./tree_auto_gen copy 4.py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;tree_auto_gen
                 copy 4.py
             </a> </br>
         </div>
         <div id="toggle-folder-1"> &#x1F4C1;&nbsp;test folder/</div>
-        <div id="folder-content-0" style="display:block;">
-            <a href="test folderin folder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;in folder
-            </a> </br><a href="test foldertest">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test
+        <div id="folder-content-0" style="display:none;">
+            <a href="./test folder/in folder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;in folder
+            </a> </br><a href="./test folder/test">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test
             </a> </br><a
-                href="test foldertest.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test.html
+                href="./test folder/test.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x1F4C4;&nbsp;test.html
             </a> </br>
         </div>
         <div id="toggle-folder-2"> &#x1F4C1;&nbsp;.ipynb_checkpoints/</div>
-        <div id="folder-content-0" style="display:block;">
+        <div id="folder-content-0" style="display:none;">
         </div>
     </ul>
 </body>
+<script>
+    // Get all elements with the toggle-folder class
+    var toggleFolders = document.querySelectorAll(".toggle-folder");
+
+    // Add event listeners to all toggle-folder elements
+    toggleFolders.forEach(function (toggleFolder) {
+        // Get the next sibling element with the folder-content class
+        var folderContent = toggleFolder.nextElementSibling;
+
+        // Add an event listener for the toggle-folder element
+        toggleFolder.addEventListener("click", function () {
+            // If the folder-content element is hidden, show it
+            if (folderContent.style.display === "none") {
+                folderContent.style.display = "block";
+            }
+            // If the folder-content element is visible, hide it
+            else {
+                folderContent.style.display = "none";
+            }
+        });
+    });
+</script>
 
 </html>
