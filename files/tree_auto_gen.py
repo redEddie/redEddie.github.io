@@ -27,29 +27,30 @@ def list_files(html, startpath, exclude_this_files):
     return html
 
 
-def add_css(html, startpath):
+def add_css(main_text, startpath):
     # css를 추가하는 함수 for toggle
-    css = ""
+    add_css = ""
     l = 0
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
         k = 0
         for file in files:
-            css += "#toggle-folder-{}-{} {{cursor: pointer; font-weight: bold; text-decoration: underline;}}\n".format(
+            add_css += "#toggle-folder-{}-{} {{cursor: pointer; font-weight: bold; text-decoration: underline;}}\n".format(
                 l, k)
             k += 1
             # print(str(k) + css)
         l += 1
-    htmlandcss = html
-    htmlandcss += css
-    print(htmlandcss)
+    css_in_text = main_text
+
+    css_in_text += add_css
+    print(css_in_text)
     print("======== css done =========")
-    return htmlandcss
+    return css_in_text
 
 
 print("========{}=======".format(datetime.datetime.now()))
 # main starts
-html = "<html>"
+main_text = "<html>"
 
 # 파일트리 시작점, 생성점 지정
 startpath = "./files/"
@@ -57,21 +58,22 @@ exclude_this_files = [".DS_Store"]
 
 
 # css 추가
-html += "<style>"
-add_css(html, startpath)
-html += "</style>"
+main_text += "<style>"
+main_text = add_css(main_text, startpath)
+main_text += "</style>"
 # 본문
-html += "<body>"
-html = list_files(html, startpath, exclude_this_files)
-html += "</body>"
+main_text += "<body>"
+main_text = list_files(main_text, startpath, exclude_this_files)
+main_text += "</body>"
 
 # main ended
-html += "</html>"
+main_text += "</html>"
 
 # html 파일 만들기
 folder_path = "./files/"
 with open(os.path.join(folder_path, "index.html"), "w") as f:
-    f.write(html)
+    f.write(main_text
+            )
 
 print("===========================")
 print("index.html starts at", os.path.abspath(startpath))
