@@ -9,20 +9,30 @@ def list_files(html, startpath, exclude_this_files):
     """
     html = html
     html += "<ul>"
+    l = 0
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
         indent = "&nbsp;&nbsp;" * 4 * level
-        html += "<div>{}{}{}/</div>".format(indent,
-                                            "&#x1F4C1;&nbsp;", escape(os.path.basename(root)))
+        html += '<div id = "{}" > {}{}{}/</div>\n'.format("toggle-folder-"+str(l), indent,
+                                                          "&#x1F4C1;&nbsp;", escape(os.path.basename(root)))
+        l += 1
         # 파일은 제외할 키워드가 포함되면 html리스트에 표시되지 않음.
         subindent = "&nbsp;&nbsp;" * 4 * (level + 1)
+        k = 0
+        html += '<div id = "{}" style="display:block;">\n'.format(
+                "folder-content-"+str(k))
         for file in files:
             for key in exclude_this_files:
                 if key in file:
                     continue
                 else:
-                    html += "<div>{}{}{}</div>".format(subindent,
-                                                       "&#x1F4C4;&nbsp;", escape(file))
+                    html += '<a href = "{}{}">'.format(
+                        escape(os.path.basename(root)), escape(file))
+                    html += '{}{}{}\n'.format(subindent,
+                                              "&#x1F4C4;&nbsp;", escape(file))
+                    html += '</a> </br>'
+            k += 1
+        html += '</div>\n'
     html += "</ul>"
     return html
 
@@ -33,12 +43,8 @@ def add_css(main_text, startpath):
     l = 0
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
-        k = 0
-        for file in files:
-            add_css += "#toggle-folder-{}-{} {{cursor: pointer; font-weight: bold; text-decoration: underline;}}\n".format(
-                l, k)
-            k += 1
-            # print(str(k) + css)
+        add_css += "#toggle-folder-{} {{cursor: pointer; font-weight: bold; text-decoration: underline;}}\n".format(
+            l)
         l += 1
     css_in_text = main_text
 
