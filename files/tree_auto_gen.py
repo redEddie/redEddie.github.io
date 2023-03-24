@@ -43,19 +43,18 @@ def list_files(html, startpath, exclude_this_files):
 
 def add_css(main_text, startpath):
     # css를 추가하는 함수 for toggle
-    add_css = ""
+    add_css = main_text
     l = 0
+    add_css += 'a {\n'
+    add_css += 'text-decoration: none;\n'
+    add_css += '{}\n'.format("}")
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
         add_css += "#toggle_folder_{} {{cursor: pointer; font_weight: bold; text_decoration: underline;}}\n".format(
             l)
         l += 1
-    css_in_text = main_text
-
-    css_in_text += add_css
-    print(css_in_text)
     print("======== css done =========")
-    return css_in_text
+    return add_css
 
 
 def add_script(html, startpath):
@@ -86,7 +85,8 @@ print("========{}=======".format(datetime.datetime.now()))
 main_text = "<html>"
 
 # 파일트리 시작점, 생성점 지정
-startpath = "./files/"
+startpath = "./"
+folder_path = "./"
 exclude_this_files = [".DS_Store"]
 
 
@@ -107,7 +107,6 @@ main_text += "</script>"
 main_text += "</html>"
 
 # html 파일 만들기
-folder_path = "./files/"
 with open(os.path.join(folder_path, "index.html"), "w") as f:
     f.write(main_text
             )
