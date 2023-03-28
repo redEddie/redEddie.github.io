@@ -1,14 +1,7 @@
-def add_text_to(text):
-    textpost = text
-    textpost += "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+import datetime
+import os
+from html import escape
 
-    return textpost
-
-
-sample = "none"
-
-print(sample)
-sample += "+none"
-print(sample)
-sample = add_text_to(sample)
-print(sample)
+startpath = "./"
+folder_path = "./"
+exclude_this_files = [".DS_Store"]
