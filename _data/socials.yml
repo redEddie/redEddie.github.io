@@ -1,0 +1,8 @@
+# 소셜/연락처. jekyll-socials 플러그인이 정의된 순서대로 표시.
+# 더 많은 필드: https://github.com/george-gca/jekyll-socials
+email: eddie36@naver.com # 졸업 후에도 유효한 개인 이메일
+github_username: redEddie
+linkedin_username: chanwook-jeon
+# rss_icon 제거: 블로그 미운영이라 RSS 피드가 비어 있어 숨김
+# scholar_userid:   # Google Scholar 생성 후 추가
+# cv_pdf:           # CV PDF 추가 시 경로 지정 (예: /assets/pdf/cv.pdf)

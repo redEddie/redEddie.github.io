@@ -1,0 +1,145 @@
+cv:
+  name: Chanwook Jeon (전찬욱)
+  label: Robotics & AI Researcher
+  email: eddie36@naver.com
+  location: Daegu, South Korea
+  image: ""
+  summary: >
+    경북대학교 물리지능연구실 석사과정. 사족보행 로코모션에서 VLA(Vision-Language-Action) 모델로,
+    그리고 이를 실물 로봇에 적용(deploy)하는 데까지 나아가며 "세상을 이해하는 로봇지능"을 탐구한다.
+
+  social_networks:
+    - network: GitHub
+      username: redEddie
+
+  sections:
+    Education:
+      - institution: Kyungpook National University, Graduate School
+        location: Daegu, South Korea
+        area: Electronics and Electrical Engineering
+        studyType: M.S. (expected Aug 2026)
+        start_date: 2025-03
+        end_date: 2026-08
+        highlights:
+          - "물리지능연구실(Physical Intelligence Lab) · 지도교수 이상문 (Prof. Sangmoon Lee)"
+          - "학위논문: Selective State Space Model-based Efficient Imitation Learning for Generalizable Robot Manipulation (진행 중)"
+
+      - institution: Kyungpook National University
+        location: Daegu, South Korea
+        area: Electronic Engineering
+        studyType: B.S.
+        start_date: 2019-03
+        end_date: 2025-02
+
+    Experience:
+      - company: Physical Intelligence Lab, Kyungpook National University
+        position: Graduate Researcher
+        location: Daegu, South Korea
+        start_date: 2025-03
+        end_date: present
+        highlights:
+          - "VLA 모델 설계·개발 및 실물 로봇 적용 (학위논문 연구)"
+          - "고성능 딥러닝 학습 서버 직접 선정·구축·운용 (Threadripper 7970X · 384GB DDR5 · 2× RTX PRO 6000 96GB)"
+
+      - company: Kyungpook National University
+        position: Teaching Assistant — Microprocessor Design
+        location: Daegu, South Korea
+        start_date: 2024-09
+        end_date: 2025-01
+        highlights:
+          - "NXP S32K144 차량용 MCU 기반 어셈블리·C 실습 지원 (우수성적 추천)"
+
+      - company: Georgia Institute of Technology
+        position: Research Intern (short-term)
+        location: Atlanta, GA, USA
+        start_date: 2024-08
+        end_date: 2024-08
+        highlights:
+          - "2024.08.12–23 (2주) · 하세훈 교수 연구실 · Unitree Aliengo 기반 사족보행 로코모션 — 첫 실로봇 경험"
+
+    Research Projects:
+      - bullet: "**시스템 에어컨 AI 자율운전제어 — 3차년도** (LG전자 산학) · 연구보조원 · 2025.07–2026.06 · VRF 시스템 시계열 데이터 기반 전력소비 예측"
+      - bullet: "**시스템 에어컨 AI 자율운전제어 — 2차년도** (LG전자 산학) · 연구보조원 · 2024.07–2024.12 · VRF 실내기 위치 자동 식별·동일 공간 판별 · 산출물: 학회 2회 발표 + 저널 1편 투고(심사 중)"
+      - bullet: "**동적 정보 확산모델 기반 생성형 모방학습·데이터 기반 제어** (한국연구재단) · 학생연구자 · 2023.03–2025.02 · 사족보행 보행 구현, Sim-to-Real·State Estimation"
+      - bullet: "**물리적 상호작용 기반 심층상태공간모델 행동지능 기초연구실** (한국연구재단) · 학생연구자 · 2025.06–현재"
+      - bullet: "**미래형자동차 핵심기술 전문인력양성** (KIAT, 인력양성) · 학생연구자 · 2025.03–현재"
+      - bullet: "**지역지능화혁신인재양성, 경북대학교** (IITP, 인력양성) · 학생연구자 · 2025.01–2025.12"
+
+    Publications:
+      - title: "Novel Clustering Approach for Multi-Zone VRF Systems Using Q-Learning"
+        publisher: "ISA Transactions (저널, 투고·심사 중)"
+        date: 2026-03
+        summary: "제1저자"
+      - title: "Reinforcement Learning-Based Indoor Unit Clustering in Multi-Zone VRF Systems"
+        publisher: "ICCAS 2025"
+        date: 2025-11
+        url: "https://doi.org/10.23919/ICCAS66577.2025.11301260"
+        summary: "제1저자"
+      - title: "Fine-tuning a Vision-Language-Action Model for Fault-Aware Quadruped Rescue Robots"
+        publisher: "IROS 2025 (Late-Breaking)"
+        date: 2025-10
+        summary: "공동저자"
+      - title: "Integrating Fuzzy Logic into Reinforcement Learning for Action Correction in Quadruped Locomotion"
+        publisher: "IFSA World Congress & NAFIPS 2025"
+        date: 2025-08
+        summary: "제1저자"
+      - title: "시각-언어 모델을 활용한 사족보행 로봇의 장애물 회피"
+        publisher: "대한전기학회 제56회 하계학술대회"
+        date: 2025-07
+        url: "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12351807"
+        summary: "공동저자"
+      - title: "엣지 AI 환경에서 멀티코어 CPU 및 GPU 메모리 설정 최적화에 관한 실험적 연구"
+        publisher: "ASK 2025 (한국정보처리학회)"
+        date: 2025-05
+        url: "https://kiss.kstudy.com/Detail/Ar?key=4176946"
+        summary: "공동저자 · ASK 2025 우수논문상"
+      - title: "시스템 에어컨의 자율 운전을 위한 강화학습 기반 실내기 분류 알고리즘"
+        publisher: "The 20th IeMeK Symposium on Embedded Technology"
+        date: 2025-05
+        summary: "제1저자"
+
+    Honors and Awards:
+      - title: Best Paper Award
+        awarder: ASK 2025 (Annual Symposium of KIPS)
+        date: 2025-05
+      - title: Finalist (본선 진출, 30/198)
+        awarder: IITP ICT Challenge
+        date: 2025-07
+        summary: VLA 기반 사족보행 험지·동작장애 극복 사업계획.
+      - title: Excellence Award (2nd), SEEK Square
+        awarder: Dept. of Electronic Engineering, KNU
+        date: 2024-11
+        summary: 시스템에어컨 시계열 분석, 실내기 공간일치도 90%+ 도출.
+      - title: National Science & Engineering Scholarship (장학금)
+        awarder: National Research Foundation of Korea
+        summary: 학부 전 기간 수혜.
+
+    Skills:
+      - name: Programming
+        keywords: "Python (primary), C / Assembly (embedded, NXP S32K144)"
+      - name: AI / ML
+        keywords: "PyTorch, Selective State Space Model (Mamba), Imitation Learning, Reinforcement Learning, VLA / VLM, Fuzzy Logic, Time-series"
+      - name: Robotics
+        keywords: "ROS, Unitree Aliengo / Go2, Franka Research 3, Open Duck Mini, SO-ARM, UMI, Sim-to-Real, State Estimation"
+      - name: Autonomous Driving / Embedded
+        keywords: "CAN, SDV (Zonal/HPC), MIPI CSI, YOLOv8"
+      - name: Infrastructure
+        keywords: "Deep-learning server build & operation (Linux)"
+
+    Training:
+      - bullet: "**SDV 아키텍처 자율주행 통합시스템 구현 실습** (2026.02, 32h)"
+      - bullet: "**미래형자동차 현장실습**, 한국자동차연구원 (2025.08, 40h)"
+      - bullet: "**IP 기술사업화 전문인력 양성**, 경북대학교 (2025.09)"
+
+    Activities:
+      - bullet: "**스킨스쿠버 동아리** (2019–현재) — 물 안팎으로 활동적인 편이고, 장비 다루는 걸 좋아합니다."
+
+    Languages:
+      - name: Korean
+        summary: Native
+      - name: English
+        summary: OPIc IH
+
+    Interests:
+      - name: Research
+        keywords: "Robot intelligence, Vision-Language-Action, Imitation Learning, Legged locomotion, Manipulation, Sim-to-Real"
