@@ -4,6 +4,7 @@ title: 모바일 로봇 프로젝트
 description: 사족보행 기반 모바일 로봇 (대회 준비)
 importance: 3
 category: research
+tags: [Quadruped, RL, Locomotion, Sim-to-Real]
 related_publications: false
 ---
 

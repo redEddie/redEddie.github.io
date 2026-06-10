@@ -4,6 +4,7 @@ title: AI 학습 서버 구축·운용
 description: 대규모 VLA 학습을 위한 딥러닝 서버 직접 구축·운용
 importance: 4
 category: research
+tags: [Linux, CUDA, Multi-GPU, Infrastructure]
 related_publications: false
 ---
 

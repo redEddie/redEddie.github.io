@@ -4,6 +4,7 @@ title: LG 산학과제 — VRF 전력소비 예측 (3차년도)
 description: VRF 시스템 시계열 데이터 기반 전력소비 예측
 importance: 5
 category: research
+tags: [Time-series, Forecasting, Deep Learning]
 related_publications: false
 ---
 
