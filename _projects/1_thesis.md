@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 석사 학위논문 — Selective SSM 기반 모방학습
-description: Selective State Space Model-based Efficient Imitation Learning for Generalizable Robot Manipulation
+description: Selective State Space Model-based Efficient Imitation Learning for Generalizable Robot Manipulation · 2026년 8월
 img: assets/projects/thesis/fig-overall.png
 importance: 1
 category: research

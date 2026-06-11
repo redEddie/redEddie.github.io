@@ -59,7 +59,7 @@ cv:
 
     Research Projects:
       - bullet: "**시스템 에어컨 AI 자율운전제어 — 3차년도** (LG전자 산학) · 연구보조원 · 2025.07–2026.06 · VRF 시스템 시계열 데이터 기반 전력소비 예측"
-      - bullet: "**시스템 에어컨 AI 자율운전제어 — 2차년도** (LG전자 산학) · 연구보조원 · 2024.07–2024.12 · VRF 실내기 위치 자동 식별·동일 공간 판별 · 산출물: 학회 2회 발표 + 저널 1편 투고(심사 중)"
+      - bullet: "**시스템 에어컨 AI 자율운전제어 — 2차년도** (LG전자 산학) · 연구보조원 · 2024.07–2024.12 · VRF 실내기 위치 자동 식별·동일 공간 판별 · 산출물: 학회 2회 발표 + 저널 1편 투고(Submitted)"
       - bullet: "**동적 정보 확산모델 기반 생성형 모방학습·데이터 기반 제어** (한국연구재단) · 학생연구자 · 2023.03–2025.02 · 사족보행 보행 구현, Sim-to-Real·State Estimation"
       - bullet: "**물리적 상호작용 기반 심층상태공간모델 행동지능 기초연구실** (한국연구재단) · 학생연구자 · 2025.06–현재"
       - bullet: "**미래형자동차 핵심기술 전문인력양성** (KIAT, 인력양성) · 학생연구자 · 2025.03–현재"
@@ -67,7 +67,7 @@ cv:
 
     Publications:
       - title: "Novel Clustering Approach for Multi-Zone VRF Systems Using Q-Learning"
-        publisher: "ISA Transactions (저널, 투고·심사 중)"
+        publisher: "ISA Transactions (저널, 투고 / Submitted)"
         date: 2026-03
         summary: "제1저자"
       - title: "Reinforcement Learning-Based Indoor Unit Clustering in Multi-Zone VRF Systems"

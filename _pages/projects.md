@@ -2,10 +2,10 @@
 layout: page
 title: Projects
 permalink: /projects/
-description: 진행 중이거나 대표할 만한 연구·개발 프로젝트.
+description: 진행 중이거나 대표할 만한 연구·개발 프로젝트와 수업 프로젝트.
 nav: true
 nav_order: 3
-display_categories: [research]
+display_categories: [research, coursework]
 horizontal: false
 ---
 
@@ -24,13 +24,14 @@ horizontal: false
     white-space: nowrap;
   }
   .card:hover .project-tag { background-color: var(--global-theme-color); color: var(--global-card-bg-color); }
+  .projects h2.category { color: var(--global-text-color); }
 </style>
 <div class="projects">
 {% if site.enable_project_categories and page.display_categories %}
   <!-- Display categorized projects -->
   {% for category in page.display_categories %}
   <a id="{{ category }}" href=".#{{ category }}">
-    <h2 class="category">{{ category }}</h2>
+    <h2 class="category">{{ category | capitalize }}</h2>
   </a>
   {% assign categorized_projects = site.projects | where: "category", category %}
   {% assign sorted_projects = categorized_projects | sort: "importance" %}

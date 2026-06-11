@@ -9,11 +9,15 @@ nav_order: 2
 
 <!-- _pages/publications.md -->
 
+<style>
+  .publications h2.bibliography { color: var(--global-text-color); }
+</style>
+
 <!-- Bibsearch Feature -->
 
 {% include bib_search.liquid %}
 
-## Journal · 저널 (1, 투고·심사 중 / under review)
+## Journal · 저널 (1, 투고 / Submitted)
 
 <div class="publications">
 {% bibliography --query @article %}
