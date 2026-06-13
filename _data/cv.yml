@@ -50,12 +50,12 @@ cv:
           - "NXP S32K144 차량용 MCU 기반 어셈블리·C 실습 지원 (우수성적 추천)"
 
       - company: Georgia Institute of Technology
-        position: Research Intern (short-term)
+        position: Research Intern
         location: Atlanta, GA, USA
         start_date: 2024-08
         end_date: 2024-08
         highlights:
-          - "2024.08.12–23 (2주) · 하세훈 교수 연구실 · Unitree Aliengo 기반 사족보행 로코모션 — 첫 실로봇 경험"
+          - "2024.08.12–23 · 하세훈 교수 연구실 · Unitree Aliengo 기반 사족보행 로코모션"
 
     Research Projects:
       - bullet: "**시스템 에어컨 AI 자율운전제어 — 3차년도** (LG전자 산학) · 연구보조원 · 2025.07–2026.06 · VRF 시스템 시계열 데이터 기반 전력소비 예측"
