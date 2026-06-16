@@ -1,0 +1,179 @@
+<!DOCTYPE html> <html lang="ko"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Open Duck Mini — 저비용 이족보행 로봇 | Chanwook Jeon </title> <meta name="author" content="Chanwook Jeon"> <meta name="description" content="오픈소스 이족보행 로봇 재현 — AMP 스타일 로코모션 학습과 실물 구현, 저가 모터의 한계 분석 · 2026.06"> <meta name="keywords" content="robotics, VLA, vision-language-action, imitation learning, legged locomotion, manipulation, robot intelligence"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%A4%96&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://rededdie.github.io/projects/10_openduckmini/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Chanwook</span> Jeon </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">About </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">Publications </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">Projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Open Duck Mini — 저비용 이족보행 로봇</h1> <p class="post-description">오픈소스 이족보행 로봇 재현 — AMP 스타일 로코모션 학습과 실물 구현, 저가 모터의 한계 분석 · 2026.06</p> </header> <article> <style>
+  .duck-vid {
+    max-height: 360px;
+    width: auto !important;
+    margin: 0 auto;
+    display: block;
+  }
+  .duck-vid-lg {
+    max-height: 470px;
+    width: auto !important;
+    margin: 0 auto;
+    display: block;
+  }
+  .duck-pair-img {
+    max-height: 300px;
+    width: auto !important;
+    margin: 0 auto;
+    display: block;
+  }
+</style> <p>3D 프린팅 부품과 Feetech 저가 서보모터만으로 집에서도 만들 수 있는 오픈소스 이족보행 로봇 <a href="https://github.com/apirrone/Open_Duck_Mini" rel="external nofollow noopener" target="_blank">Open Duck Mini</a>를 직접 조립하고 걷게 해본 개인 프로젝트입니다. 강화학습으로 학습한 로코모션을 실물 로봇으로 옮기는 전 과정을 경험하는 것이 목표였습니다. 이 프로젝트를 크게 두 부분으로 나누어 분석했습니다 — <strong>(1)</strong> <code class="language-plaintext highlighter-rouge">placo</code>로 레퍼런스 모션을 생성해 AMP 스타일로 로코모션을 학습시키는 부분, <strong>(2)</strong> 학습된 정책을 실제 로봇에 올려 센서–연산–구동을 잇는 부분입니다.</p> <h2 id="만든-로봇">만든 로봇</h2> <p>상용 연구용 플랫폼과 달리 부품 대부분을 직접 출력하고 저가 모터로 구동하는 구조라, 적은 비용으로 이족보행 로봇의 전 과정을 다뤄볼 수 있었습니다.</p> <div class="row justify-content-center align-items-center"> <div class="col-md-5 mt-3 mt-md-0"> <figure> <picture> <img src="/assets/projects/openduckmini/build-hardware.jpg" class="img-fluid rounded z-depth-1 duck-pair-img" width="100%" height="auto" title="Assembled Open Duck Mini" data-zoomable="" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> </div> <div class="col-md-6 mt-3 mt-md-0"> <figure> <picture> <img src="/assets/projects/openduckmini/duck-render.png" class="img-fluid rounded z-depth-1 duck-pair-img" width="100%" height="auto" title="Simulation model" data-zoomable="" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> </div> </div> <div class="caption">좌: 직접 조립한 실물 로봇 — 주황색 3D 프린팅 섀시, Feetech 서보모터와 배선 / 우: 학습·검증에 사용한 시뮬레이션 모델</div> <h2 id="amp-스타일-로코모션-학습--레퍼런스-모션을-보상으로">AMP 스타일 로코모션 학습 — 레퍼런스 모션을 보상으로</h2> <p>보행 동작을 보상 함수로 일일이 설계(reward engineering)하는 대신, <strong>참고할 만한 움직임(reference motion)을 미리 만들어 강화학습의 추가 보상 항으로 제공하는</strong> AMP 스타일 접근을 따랐습니다. 레퍼런스 모션은 <code class="language-plaintext highlighter-rouge">placo</code>로 이차계획(QP) 문제를 풀어 생성합니다 — 보행 주기에 맞춰 다리 관절 궤적과 발 접촉(contact)이 주기적으로 반복되는 기준 동작을 어렵지 않게 얻을 수 있었습니다.</p> <div class="row justify-content-center"> <div class="col-md-9 mt-3"> <figure> <picture> <img src="/assets/projects/openduckmini/ref-motion-periodic.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Generated reference motion" data-zoomable="" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> </div> </div> <div class="caption">`placo`로 생성한 보행 레퍼런스 — 위: 다리 관절 궤적, 아래: 좌·우 발 접촉이 주기적으로 번갈아 나타나는 걸음새</div> <p>복잡한 보상 설계 없이도, 이렇게 만든 레퍼런스에 스타일을 맞추도록 학습시키는 것만으로 자연스러운 걸음을 얻을 수 있다는 점이 인상적이었습니다. 아래는 프로젝트에서 제공하는 학습 체크포인트를 시뮬레이터에서 재생한 모습입니다.</p> <div class="row justify-content-center"> <div class="col-md mt-3 mt-md-0"> <figure> <video src="/assets/projects/openduckmini/checkpoint-walk.mp4" class="img-fluid rounded z-depth-1 duck-vid" width="auto" height="auto" autoplay="" controls="" loop="" muted=""></video> </figure> </div> </div> <div class="caption">프로젝트 제공 체크포인트의 시뮬레이터 보행 — 학습된 정책이 레퍼런스 걸음새를 따라간다</div> <h2 id="모터를-더-사실적으로--백래시입력-전압-모델링">모터를 더 사실적으로 — 백래시·입력 전압 모델링</h2> <p>이 로봇의 원본인 디즈니 BDX 논문은, 저가 모터의 미세한 <strong>백래시(backlash)</strong>를 모사하기 위해 모터마다 가상 모터를 덧붙여 ±0.5°의 유격을 모델링하고 그 모터 모델 위에서 정책을 학습합니다. 직접 비교해 봤지만, 백래시의 영향은 시뮬레이터에서도 실제 로봇에서도 뚜렷하게 확인하기 어려웠습니다.</p> <div class="row justify-content-center"> <div class="col-md-10 mt-3"> <figure> <video src="/assets/projects/openduckmini/backlash-compare.mp4" class="img-fluid rounded z-depth-1" width="auto" height="auto" autoplay="" controls="" loop="" muted=""></video> </figure> </div> </div> <div class="caption">±0.5° 백래시 모터 모델 유무 비교 — 시뮬레이터·실물 모두에서 영향을 뚜렷이 확인하긴 어려웠다</div> <p>반면 <strong>입력 전압에 따른 최대 토크 차이</strong>는 시뮬레이터와 실제 로봇 양쪽에서 분명하게 관측되었습니다. 5V와 7.4V를 비교하면 모터가 낼 수 있는 토크가 달라지고, 그 차이가 보행 거동으로 이어졌습니다. BAM 액추에이터 모델 덕분에 <strong>전압과 토크의 상관관계를 직접 확인</strong>할 수 있었던 점이 이 부분의 수확입니다.</p> <div class="row justify-content-center"> <div class="col-md-10 mt-3"> <figure> <video src="/assets/projects/openduckmini/motor-voltage-compare.mp4" class="img-fluid rounded z-depth-1" width="auto" height="auto" autoplay="" controls="" loop="" muted=""></video> </figure> </div> </div> <div class="caption">입력 전압에 따른 모터 거동 시뮬레이션 — 5V(좌) vs 7.4V(우), 전압이 높을수록 낼 수 있는 최대 토크가 커진다</div> <h2 id="나만의-변주--점프하는-레퍼런스">나만의 변주 — 점프하는 레퍼런스</h2> <p>기본 보행을 넘어, 직접 변주를 시도했습니다. 두 발이 동시에 지면을 떠나는 <strong>비행 구간(flight phase)</strong>을 갖는 점프 레퍼런스를 만들어, QP 기반 레퍼런스 생성이 어디까지 가능한지 확인해 보았습니다.</p> <div class="row justify-content-center"> <div class="col-md-9 mt-3"> <figure> <picture> <img src="/assets/projects/openduckmini/ref-motion-hop.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Hop reference motion" data-zoomable="" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> </div> </div> <div class="caption">직접 생성한 점프 레퍼런스 — 좌·우 발 접촉이 동시에 0이 되는 비행 구간(분홍 음영)과 이륙(vz&gt;0)·착지(vz&lt;0) 수직 속도가 나타난다</div> <div class="row"> <div class="col-md mt-3 mt-md-0"> <figure> <video src="/assets/projects/openduckmini/hop-fwd-reference.mp4" class="img-fluid rounded z-depth-1 duck-vid" width="auto" height="auto" autoplay="" controls="" loop="" muted=""></video> </figure> </div> <div class="col-md mt-3 mt-md-0"> <figure> <video src="/assets/projects/openduckmini/hop-fwd-trained.mp4" class="img-fluid rounded z-depth-1 duck-vid" width="auto" height="auto" autoplay="" controls="" loop="" muted=""></video> </figure> </div> </div> <div class="caption">좌: 직접 만든 전진 점프 레퍼런스 / 우: 이를 학습한 정책</div> <p>다만 직접 만든 점프 레퍼런스가 물리 법칙을 온전히 만족하는 모션으로 생성된 것은 아니었습니다. 그 문제를 차치하더라도, 모터 출력의 한계 탓에 <strong>시뮬레이터에서조차 유의미한 점프를 학습하지는 못했습니다.</strong> 그럼에도 간단한 이차계획 문제를 푸는 것만으로 원하는 레퍼런스 모션을 만들고, 그 스타일을 강화학습에 입힐 수 있다는 점을 직접 확인한 것은 좋은 공부였습니다.</p> <h2 id="실물-로봇-구현과-한계">실물 로봇 구현과 한계</h2> <p>학습한 정책을 실제 로봇에 올렸습니다. IMU와 모터 회전 위치를 읽어 관측을 구성하고, 정책 연산을 거쳐 <strong>50Hz로 모터에 목표 명령</strong>을 보내는 흐름까지는 이해하고 동작시킬 수 있었습니다. 그러나 로봇은 제대로 걷지 못하고 넘어졌습니다.</p> <div class="row justify-content-center"> <div class="col-md-8 mt-3"> <figure> <video src="/assets/projects/openduckmini/real-walk-attempt.mp4" class="img-fluid rounded z-depth-1 duck-vid-lg" width="auto" height="auto" autoplay="" controls="" loop="" muted=""></video> </figure> </div> </div> <div class="caption">실물 로봇의 보행 시도 — 연산된 명령만큼 움직이지 못하고 균형을 잃는다</div> <p>원인을 살펴본 결과, <strong>모터가 연산된 명령보다 덜 움직여</strong> 발생한 현상으로 추론했습니다. 흥미롭게도, 같은 BOM과 전압을 쓰더라도 사용자마다 결과가 천차만별이었고, 저처럼 실패한 사례도 충분히 찾아볼 수 있었습니다. 저는 이를 잠정적으로 <strong>저가 모터의 한계</strong>로 결론지었습니다. Dynamixel처럼 연구용으로 안정적으로 검증된 모터와 달리, 저렴함을 앞세워 빠르게 보급된 저가 모터는 기능 자체의 한계뿐 아니라 개체 편차도 있는 것이 아닌가 의심하고 있습니다. 실제로 같은 문제를 겪는 다른 사용자가 있는지 <a href="https://github.com/apirrone/Open_Duck_Mini/issues/48" rel="external nofollow noopener" target="_blank">프로젝트 이슈로 남겨</a> 일부 사용자도 공유하는 문제임을 확인했습니다. 제 경우에는 다른 사용자보다도 모터가 더 좁은 범위로만 움직이고, 의도된 속도보다 현저히 느렸습니다.</p> <h2 id="imu의-역할--보행과-균형">IMU의 역할 — 보행과 균형</h2> <p>이 프로젝트를 따라 하며 가장 분명하게 배운 것은 <strong>IMU가 보행·균형에 미치는 영향</strong>입니다. 관측에서 IMU 입력(가속도·각속도)을 제거하자, 시뮬레이터에서조차 제대로 걷지 못하고 제자리걸음에 그치는 식으로만 학습되었습니다.</p> <div class="row justify-content-center"> <div class="col-md-6 mt-3"> <figure> <video src="/assets/projects/openduckmini/noimu-march.mp4" class="img-fluid rounded z-depth-1 duck-vid" width="auto" height="auto" autoplay="" controls="" loop="" muted=""></video> </figure> </div> </div> <div class="caption">IMU 입력(가속도·각속도)을 제거한 경우 — 시뮬레이터에서도 전진하지 못하고 제자리걸음에 머문다</div> <h2 id="배운-점과-앞으로의-연구">배운 점과 앞으로의 연구</h2> <p>비용 부담 없이 이족보행 로봇의 전 과정 — 레퍼런스 생성, 강화학습, 실물 이식 — 을 직접 다뤄볼 수 있는 매우 흥미로운 프로젝트였습니다. AMP 스타일 학습으로 보상 설계 부담을 줄이는 법, IMU가 보행·균형에 갖는 비중을 몸으로 이해할 수 있었습니다.</p> <p>동시에 한계도 분명했습니다. ±0.5° 백래시 모델링의 효과는 시뮬레이터·실물 모두에서 뚜렷하지 않았던 반면, BAM으로 입력 전압과 최대 토크의 상관관계는 분명히 확인할 수 있었습니다. 그럼에도 무엇보다 저가 모터는 의도된 가동 범위·속도를 내지 못한다는 근본적 제약이 있었습니다.</p> <p>이 경험을 토대로, 앞으로는 <strong>Feetech 저가 모터의 한정된 성능이 보행에 어떤 영향을 미치는지</strong>를 모터 모델 관점에서 파고들어 보려 합니다. 토크·속도가 왜 부족했는지, 균형을 잡기 위해 필요한 새로운 자세를 모터가 충분히 만들어내지 못한 것인지 — 모터 모델을 제대로 공부하면 이번에 잠정적으로 내린 결론을 정량적으로 확인할 수 있을 것으로 기대합니다.</p> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Chanwook Jeon. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "About",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-publications",
+          title: "Publications",
+          description: "저널 논문 및 학회 발표.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
+        },{id: "nav-projects",
+          title: "Projects",
+          description: "진행 중이거나 대표할 만한 연구·개발 프로젝트와 수업 프로젝트.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "Chanwook Jeon (전찬욱) — Robotics &amp;amp; AI, Physical Intelligence Lab, Kyungpook National University.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "news-ask-2025에서-우수논문상을-수상했습니다",
+          title: 'ASK 2025에서 우수논문상을 수상했습니다. 🏆',
+          description: "",
+          section: "News",},{id: "news-ifsa-world-congress-2025에서-fuzzy-logic-강화학습-기반-사족보행-동작-보정-연구를-제1저자로-발표했습니다",
+          title: 'IFSA World Congress 2025에서 Fuzzy Logic·강화학습 기반 사족보행 동작 보정 연구를 제1저자로 발표했습니다....',
+          description: "",
+          section: "News",},{id: "news-iros-2025-late-breaking-results에서-사족보행-구조로봇용-vla-파인튜닝-연구를-공동저자로-발표했습니다",
+          title: 'IROS 2025 Late-Breaking Results에서 사족보행 구조로봇용 VLA 파인튜닝 연구를 공동저자로 발표했습니다.',
+          description: "",
+          section: "News",},{id: "news-iccas-2025에서-멀티존-vrf-강화학습-클러스터링-연구를-제1저자로-발표했습니다",
+          title: 'ICCAS 2025에서 멀티존 VRF 강화학습 클러스터링 연구를 제1저자로 발표했습니다.',
+          description: "",
+          section: "News",},{id: "news-멀티존-vrf-클러스터링-연구를-isa-transactions에-저널-논문으로-투고했습니다-submitted",
+          title: '멀티존 VRF 클러스터링 연구를 ISA Transactions에 저널 논문으로 투고했습니다 (Submitted).',
+          description: "",
+          section: "News",},{id: "projects-open-duck-mini-저비용-이족보행-로봇",
+          title: 'Open Duck Mini — 저비용 이족보행 로봇',
+          description: "오픈소스 이족보행 로봇 재현 — AMP 스타일 로코모션 학습과 실물 구현, 저가 모터의 한계 분석 · 2026.06",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/10_openduckmini/";
+            },},{id: "projects-석사-학위논문-selective-ssm-기반-모방학습",
+          title: '석사 학위논문 — Selective SSM 기반 모방학습',
+          description: "Selective State Space Model-based Efficient Imitation Learning for Generalizable Robot Manipulation · 2026년 8월",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/1_thesis/";
+            },},{id: "projects-매니퓰레이션-프로젝트",
+          title: '매니퓰레이션 프로젝트',
+          description: "시뮬레이션 검증 · 실물 SO-101 데이터 수집 · UMI 기반 데이터셋 확보",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/2_manipulation/";
+            },},{id: "projects-모바일-로봇-프로젝트",
+          title: '모바일 로봇 프로젝트',
+          description: "사족보행 기반 모바일 로봇 (대회 준비)",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/3_mobile_robot/";
+            },},{id: "projects-ai-학습-서버-구축-운용",
+          title: 'AI 학습 서버 구축·운용',
+          description: "대규모 VLA 학습을 위한 딥러닝 서버 직접 구축·운용",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/4_ai_server/";
+            },},{id: "projects-lg-산학과제-vrf-전력소비-예측-3차년도",
+          title: 'LG 산학과제 — VRF 전력소비 예측 (3차년도)',
+          description: "VRF 시스템 시계열 데이터 기반 전력소비 예측",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_lg_vrf_power/";
+            },},{id: "projects-lg-산학과제-vrf-실내기-식별-클러스터링-2차년도",
+          title: 'LG 산학과제 — VRF 실내기 식별·클러스터링 (2차년도)',
+          description: "VRF 시계열 데이터에서 실내기 위치 식별·동일 공간 판별",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/6_lg_vrf_cluster/";
+            },},{id: "projects-자기부상-maglev-비선형-제어",
+          title: '자기부상(MagLev) 비선형 제어',
+          description: "비선형시스템제어 수업 프로젝트 — Feedback Linearization 설계·실장비 실시간 실험 · 2025.06.23",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/7_maglev/";
+            },},{id: "projects-pnp-기반-실외-3d-위치-추정",
+          title: 'PnP 기반 실외 3D 위치 추정',
+          description: "컴퓨터비전특론 과제 — 단일 이미지와 랜드마크 좌표로 지구 좌표계 기준 카메라 포즈 추정 · 2025.06.08",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/8_pnp/";
+            },},{id: "projects-조지아공대-인턴-사족보행-로코모션-강화학습",
+          title: '조지아공대 인턴 — 사족보행 로코모션 강화학습',
+          description: "Sehoon Ha 연구실(Georgia Tech) 인턴 · legged_gym 강화학습 환경 구축과 사람 동작 기반 로코모션 연구 분석 · 2024.08",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/9_gatech_locomotion/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%65%64%64%69%65%33%36@%6E%61%76%65%72.%63%6F%6D", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/redEddie", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/chanwook-jeon", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
