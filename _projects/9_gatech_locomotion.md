@@ -29,15 +29,17 @@ Isaac Gym 기반 `legged_gym` 파이프라인을 분석하고, 로봇의 URDF·U
 
 ## 실로봇 — Unitree Aliengo 로코모션
 
-안전 거치대(suspension gantry)에 매단 Unitree Aliengo로 로코모션을 구동하며, 시뮬레이션에서 다루던 보행을 실제 하드웨어에서 처음 확인했습니다. 접지 마찰·미끄러짐·구동기 응답처럼 시뮬레이터가 완전히 담지 못하는 요소들이 거동에 어떻게 드러나는지(sim-to-real gap)를 직접 관찰했습니다.
+Unitree Aliengo에 전진(forward) 커맨드를 주어 로코모션을 구동하며, 시뮬레이션에서 다루던 보행을 실제 하드웨어에서 처음 확인했습니다. 접지 마찰·미끄러짐·구동기 응답처럼 시뮬레이터가 완전히 담지 못하는 요소들이 거동에 어떻게 드러나는지(sim-to-real gap)를 직접 관찰했습니다.
 
 <div class="row justify-content-center">
   <div class="col-md-6 mt-3">
     {% include video.liquid path="assets/projects/gatech/aliengo-locomotion.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true muted=true %}
   </div>
 </div>
-<div class="caption">안전 거치대에 매단 Unitree Aliengo의 로코모션 — 바닥 기준선을 따라 보행하며 실로봇의 거동을 관찰</div>
+<div class="caption">전진(forward) 커맨드로 구동한 Unitree Aliengo의 로코모션 — 실로봇의 거동을 직접 관찰</div>
 
 ## 이해하게 된 것 · 이후 연구로 이어진 것
 
-강화학습 로코모션은 보상 설계와 도메인 랜덤화로 "원하는 보행"을 빚어내는 과정이며, 데이터·모델·제어가 만나는 지점이 성능을 좌�
+강화학습 로코모션은 보상 설계와 도메인 랜덤화로 "원하는 보행"을 빚어내는 과정이며, 데이터·모델·제어가 만나는 지점이 성능을 좌우한다는 것을 환경 구축과 세미나 분석을 통해 이해했습니다. 동시에, 사람 동작을 로봇으로 옮기는 모방·리타게팅 관점이 강화학습 단독 접근의 보상 설계 부담을 줄이는 실질적 대안이 된다는 점을 확인했습니다.
+
+이 경험은 사족보행 로코모션이라는 출발점에서, 단순한 보행 제어를 넘어 **"동작 데이터를 어떻게 일반화 가능한 행동지능으로 만드는가"** 라는 질문으로 관심이 확장되는 계기가 되었습니다. 이후 모방학습과 VLA(Vision-Language-Action) 모델을 직접 설계·구현하는 석사 연구로 이어졌습니다.
