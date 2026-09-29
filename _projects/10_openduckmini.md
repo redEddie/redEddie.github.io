@@ -3,7 +3,7 @@ layout: page
 title: Open Duck Mini — 저비용 이족보행 로봇
 description: 오픈소스 이족보행 로봇 재현 — AMP 스타일 로코모션 학습과 실물 구현, 저가 모터의 한계 분석 · 2026.06
 img: assets/projects/openduckmini/cover.jpg
-importance: 10
+importance: 4
 category: research
 tags: [Bipedal Locomotion, Reinforcement Learning, AMP, Sim-to-Real, IMU, Feetech]
 related_publications: false

@@ -1,18 +1,22 @@
 <!-- 로컬 오버라이드(원본: al_folio_core/_includes/projects.liquid). -->
 <!-- 변경점: 설명 아래에 project.tags 를 키워드 뱃지로 표시. -->
-<div class="col">
+<!--         썸네일을 16:9 고정 영역에 표시(이미지 없으면 빈 영역 유지). -->
+<!--         collapsed: true 인 프로젝트는 '더보기'를 눌러야 보이도록 project-more 클래스 부여. -->
+<div class="col{% if project.collapsed %} project-more{% endif %}">
   <a href="{% if project.redirect %}{{ project.redirect }}{% else %}{{ project.url | relative_url }}{% endif %}">
     <div class="card h-100 hoverable">
-      {% if project.img %}
-        {%
-          include figure.liquid
-          loading="eager"
-          path=project.img
-          sizes = "250px"
-          alt="project thumbnail"
-          class="card-img-top"
-        %}
-      {% endif %}
+      <div class="project-thumb">
+        {% if project.img %}
+          {%
+            include figure.liquid
+            loading="eager"
+            path=project.img
+            sizes = "250px"
+            alt="project thumbnail"
+            class="card-img-top"
+          %}
+        {% endif %}
+      </div>
       <div class="card-body">
         <h2 class="card-title">{{ project.title }}</h2>
         <p class="card-text">{{ project.description }}</p>

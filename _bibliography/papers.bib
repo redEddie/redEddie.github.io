@@ -13,9 +13,12 @@
   author      = {Jeon, Chanwook and others},
   journal     = {ISA Transactions},
   year        = {2026},
-  month       = {3},
-  note        = {투고 (Submitted, 2026.03)},
-  selected    = {true}
+  month       = {8},
+  note        = {제1저자 · 심사 중 (Under Review)},
+  selected    = {true},
+  sum_problem = {실제 건물 환경에서는 운전 조건 변화와 외란 때문에 단일 온도 데이터만으로는 실내기 고유 특성을 안정적으로 추출하기 어렵다.},
+  sum_method  = {Q-테이블을 실내기별 제어-응답 특성 표현으로 재해석하고, 온도와 습도를 결합한 다변량 상태 표현을 정의한 뒤, 신규 운전 데이터 기반의 점진적 갱신 구조를 설계했다.},
+  sum_effect  = {실제 건물 VRF 제어보드에 탑재해 실증했으며, 짧은 운전 데이터만으로 동작하고 신규 데이터로 계속 갱신할 수 있음을 보였다.}
 }
 
 % ---- Conference presentations (2025) ----------------------------------------
@@ -28,7 +31,10 @@
   month       = {11},
   doi         = {10.23919/ICCAS66577.2025.11301260},
   note        = {제1저자},
-  selected    = {true}
+  selected    = {true},
+  sum_problem = {멀티존 환경에서 수동 임계값 설정 없이 다수 실내기의 클러스터를 안정적으로 분리하는 일반화된 판별 기준이 없다.},
+  sum_method  = {Q-테이블 간 코사인 유사도 행렬을 구성하고, Max-Margin 기법으로 최적 군집 분할 임계값을 자동 도출했다.},
+  sum_effect  = {실내기 8–15대 규모의 멀티존 환경에서 수동 파라미터 튜닝 없이 92\% 이상의 분류 정확도를 달성했다.}
 }
 
 @inproceedings{jeon2025iros,
@@ -38,8 +44,11 @@
   booktitle   = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Late-Breaking Results},
   year        = {2025},
   month       = {10},
-  note        = {공동저자. Late-Breaking Paper},
-  selected    = {true}
+  note        = {공동저자 · Late-Breaking Paper},
+  selected    = {true},
+  sum_problem = {기존 VLA 파운데이션 모델(GR00T N1.5)은 휴머노이드 중심으로 사전 학습되어, 사족보행 로봇의 동역학과 하드웨어 결함(Fault) 상황에 대응하지 못한다.},
+  sum_method  = {Isaac Sim에서 PPO 기반 강화학습으로 다리 고정 결함 극복 보행 정책을 학습시킨 뒤, 해당 정책으로 수집한 궤적 데이터를 LeRobot 포맷으로 가공해 GR00T N1.5-3B 백본에 LoRA 미세조정을 적용했다.},
+  sum_effect  = {결함 조건에서도 보행 패턴을 적응적으로 재구성해 비정형 지형 보행을 이어감을 확인했으며, PPO 교사 정책 궤적 대비 관절 각도 MSE 약 0.45를 기록했다.}
 }
 
 @inproceedings{jeon2025ifsa,
@@ -50,18 +59,24 @@
   year        = {2025},
   month       = {8},
   note        = {제1저자},
-  selected    = {true}
+  selected    = {true},
+  sum_problem = {엔드투엔드 RL 보행 정책은 지면의 구멍에서 발 디딤이 무너지는 것과 같은 학습 분포 밖의 위험 상태(Out-of-Distribution)에 대응하지 못한다.},
+  sum_method  = {전신 보행은 PPO 정책이 맡고, 고유수용 센서(IMU·엔코더) 기반의 경량 퍼지 로직 계층이 비정상 기구학 징후를 감지해 정책 출력을 보정하는 계층형 구조를 설계했다.},
+  sum_effect  = {비정상 상태 감지 시 개입하는 구조를 제시했으며, 블랙박스 RL 제어기에 실시간성과 설명 가능성을 갖춘 안전 계층(Safety Layer)을 더했다.}
 }
 
 @inproceedings{jeon2025kiee,
   abbr        = {KIEE},
   title       = {시각-언어 모델을 활용한 사족보행 로봇의 장애물 회피},
   author      = {Seo, Myeongjun and Jeon, Chanwook and Lee, Sangmoon},
-  booktitle   = {대한전기학회 제56회 하계학술대회},
+  booktitle   = {The 56th KIEE Summer Conference 2025, 대한전기학회},
   year        = {2025},
   month       = {7},
   html        = {https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12351807},
-  note        = {공동저자}
+  note        = {공동저자},
+  sum_problem = {비정형 지형에서 사족보행 로봇이 장기적·목표 지향적 작업을 안정적으로 수행하기 어렵다.},
+  sum_method  = {VLM의 의미 추론과 물리적 행동 가능성(어포던스) 추론을 결합해, 상황에 따라 행동 순서를 동적으로 계획하는 프레임워크를 설계했다.},
+  sum_effect  = {시뮬레이션에서 학습하지 않은 환경에서도 상황에 적응해 장기 목표 작업을 수행하는 것을 확인했다.}
 }
 
 @inproceedings{jeon2025ask,
@@ -74,7 +89,10 @@
   html        = {https://kiss.kstudy.com/Detail/Ar?key=4176946},
   pdf         = {https://www.manuscriptlink.com/society/kips/conference/ask2025/programBook/presentation/pdf/oral/KIPS_C2025A0318},
   award       = {ASK 2025 우수논문상},
-  note        = {공동저자. ASK 2025 우수논문상}
+  note        = {공동저자 · ASK 2025 우수논문상},
+  sum_problem = {자원이 제한된 엣지 디바이스에서 딥러닝 모델 특성에 맞는 CPU·GPU 자원 설정 기준이 부족하다.},
+  sum_method  = {Jetson 3종과 대표 모델 6종을 대상으로 CPU 코어 수와 GPU 메모리 한도를 바꿔 가며 추론 성능을 측정했다.},
+  sum_effect  = {CPU 코어 4개 이상에서는 개선 폭이 둔화되고 GPU 메모리 과할당은 오히려 성능을 떨어뜨림을 확인해, 모델 구조별 자원 배분 가이드라인을 제시했다.}
 }
 
 @inproceedings{jeon2025iemek,
@@ -84,5 +102,8 @@
   booktitle   = {The 20th IeMeK Symposium on Embedded Technology, 대한임베디드공학회},
   year        = {2025},
   month       = {5},
-  note        = {제1저자}
+  note        = {제1저자},
+  sum_problem = {시스템 에어컨의 협조 제어를 위해 실내기의 공간 배치를 자동으로 식별해야 하며, 연산 자원이 제한된 타겟 제어 보드 환경을 만족해야 한다.},
+  sum_method  = {온도와 실내기 내부 상태 중 분류에 필요한 입력을 정의해 Q-learning 분류 구조를 설계하고, C++ 경량 코드로 변환해 임베디드 제어 보드에 실장했다.},
+  sum_effect  = {연산 자원이 제한된 임베디드 제어 보드에서도 Q-learning 기반 실내기 분류가 구동됨을 확인했다.}
 }

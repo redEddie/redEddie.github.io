@@ -3,7 +3,7 @@ layout: page
 title: 조지아공대 인턴 — 사족보행 로코모션 강화학습
 description: Sehoon Ha 연구실(Georgia Tech) 인턴 · legged_gym 강화학습 환경 구축과 사람 동작 기반 로코모션 연구 분석 · 2024.08
 img: assets/projects/gatech/gatech-cover.jpg
-importance: 9
+importance: 8
 category: research
 tags: [Legged Locomotion, Reinforcement Learning, Isaac Gym, Sim-to-Real, Motion Retargeting, Unitree Aliengo]
 related_publications: false

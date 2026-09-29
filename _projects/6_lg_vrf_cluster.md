@@ -2,7 +2,8 @@
 layout: page
 title: LG 산학과제 — VRF 실내기 식별·클러스터링 (2차년도)
 description: VRF 시계열 데이터에서 실내기 위치 식별·동일 공간 판별
-importance: 6
+importance: 7
+collapsed: true
 category: research
 tags: [Clustering, Reinforcement Learning, Q-Learning, Time-series]
 related_publications: false

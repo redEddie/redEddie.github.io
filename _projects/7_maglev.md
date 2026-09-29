@@ -3,7 +3,7 @@ layout: page
 title: 자기부상(MagLev) 비선형 제어
 description: 비선형시스템제어 수업 프로젝트 — Feedback Linearization 설계·실장비 실시간 실험 · 2025.06.23
 img: assets/projects/maglev/maglev-cover.jpg
-importance: 7
+importance: 1
 category: coursework
 tags: [Nonlinear Control, Feedback Linearization, MATLAB/Simulink, Real-Time Experiment]
 related_publications: false

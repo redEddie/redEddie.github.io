@@ -5,8 +5,8 @@ cv:
   location: Daegu, South Korea
   image: ""
   summary: >
-    경북대학교 물리지능연구실 석사과정. 사족보행 로코모션에서 VLA(Vision-Language-Action) 모델로,
-    그리고 이를 실물 로봇에 적용(deploy)하는 데까지 나아가며 "세상을 이해하는 로봇지능"을 탐구한다.
+    경북대학교 물리지능연구실 석사(2026.08). Mamba-2 기반 경량 VLA 모델 설계부터 GELLO 텔레오퍼레이션 데이터 인프라,
+    Franka FR3 실로봇 배포까지 전 과정을 직접 수행했습니다.
 
   social_networks:
     - network: GitHub
@@ -17,12 +17,13 @@ cv:
       - institution: Kyungpook National University, Graduate School
         location: Daegu, South Korea
         area: Electronics and Electrical Engineering
-        studyType: M.S. (expected Aug 2026)
+        studyType: M.S.
         start_date: 2025-03
         end_date: 2026-08
         highlights:
           - "물리지능연구실(Physical Intelligence Lab) · 지도교수 이상문 (Prof. Sangmoon Lee)"
-          - "학위논문: Selective State Space Model-based Efficient Imitation Learning for Generalizable Robot Manipulation (진행 중)"
+          - "GPA 4.02 / 4.3"
+          - "학위논문: [Selective State Space Model-based Efficient Imitation Learning for Generalizable Robot Manipulation](https://www.dcollection.net/handler/knu/000000113705)"
 
       - institution: Kyungpook National University
         location: Daegu, South Korea
@@ -32,11 +33,20 @@ cv:
         end_date: 2025-02
 
     Experience:
+      - company: Korea Automotive Technology Institute (KATECH)
+        position: Research Intern — 협력형운전자동화연구센터
+        location: Cheonan, South Korea
+        start_date: 2026-07
+        end_date: 2026-08
+        highlights:
+          - "Autoware·ROS 2 기반 아이오닉 6 자율주행 실차 구축 — VCU CAN ↔ ROS 2 메시지 양방향 인터페이스 구현 및 실차 검증"
+          - "NVIDIA Alpamayo 기반 VLA 도입 검토 — Action Chunking·비동기 추론 적용 조건 도출"
+
       - company: Physical Intelligence Lab, Kyungpook National University
         position: Graduate Researcher
         location: Daegu, South Korea
         start_date: 2025-03
-        end_date: present
+        end_date: 2026-08
         highlights:
           - "VLA 모델 설계·개발 및 실물 로봇 적용 (학위논문 연구)"
           - "고성능 딥러닝 학습 서버 직접 선정·구축·운용 (Threadripper 7970X · 384GB DDR5 · 2× RTX PRO 6000 96GB)"
@@ -47,7 +57,7 @@ cv:
         start_date: 2024-09
         end_date: 2025-01
         highlights:
-          - "NXP S32K144 차량용 MCU 기반 어셈블리·C 실습 지원 (우수성적 추천)"
+          - "NXP S32K144 차량용 MCU 기반 어셈블리·C 실습 지원"
 
       - company: Georgia Institute of Technology
         position: Research Intern
@@ -55,20 +65,18 @@ cv:
         start_date: 2024-08
         end_date: 2024-08
         highlights:
-          - "2024.08.12–23 · 하세훈 교수 연구실 · Unitree Aliengo 기반 사족보행 로코모션"
+          - "하세훈 교수 연구실 · Unitree Aliengo 기반 사족보행 로코모션"
 
     Research Projects:
-      - bullet: "**시스템 에어컨 AI 자율운전제어 — 3차년도** (LG전자 산학) · 연구보조원 · 2025.07–2026.06 · VRF 시스템 시계열 데이터 기반 전력소비 예측"
-      - bullet: "**시스템 에어컨 AI 자율운전제어 — 2차년도** (LG전자 산학) · 연구보조원 · 2024.07–2024.12 · VRF 실내기 위치 자동 식별·동일 공간 판별 · 산출물: 학회 2회 발표 + 저널 1편 투고(Submitted)"
-      - bullet: "**동적 정보 확산모델 기반 생성형 모방학습·데이터 기반 제어** (한국연구재단) · 학생연구자 · 2023.03–2025.02 · 사족보행 보행 구현, Sim-to-Real·State Estimation"
-      - bullet: "**물리적 상호작용 기반 심층상태공간모델 행동지능 기초연구실** (한국연구재단) · 학생연구자 · 2025.06–현재"
-      - bullet: "**미래형자동차 핵심기술 전문인력양성** (KIAT, 인력양성) · 학생연구자 · 2025.03–현재"
-      - bullet: "**지역지능화혁신인재양성, 경북대학교** (IITP, 인력양성) · 학생연구자 · 2025.01–2025.12"
+      - bullet: "**시스템 에어컨 AI 자율운전제어 — 3차년도** (LG전자 산학) · 2025.07–2026.06"
+      - bullet: "**Deep State Space Model-based Action Intelligence through Physical Interaction** (NRF, RS-2025-02214941) · 2025.06–2026.05"
+      - bullet: "**시스템 에어컨 AI 자율운전제어 — 2차년도** (LG전자 산학) · 2024.07–2024.12"
+      - bullet: "**Behavior Cognition and Learning Control Basic Research Lab for Physical Intelligence Systems** (NRF, NRF-2022R1A4A1023248) · 2023.03–2025.02"
 
     Publications:
       - title: "Novel Clustering Approach for Multi-Zone VRF Systems Using Q-Learning"
-        publisher: "ISA Transactions (저널, 투고 / Submitted)"
-        date: 2026-03
+        publisher: "ISA Transactions (저널, 심사 중 / Under Review)"
+        date: 2026-08
         summary: "제1저자"
       - title: "Reinforcement Learning-Based Indoor Unit Clustering in Multi-Zone VRF Systems"
         publisher: "ICCAS 2025"
@@ -84,7 +92,7 @@ cv:
         date: 2025-08
         summary: "제1저자"
       - title: "시각-언어 모델을 활용한 사족보행 로봇의 장애물 회피"
-        publisher: "대한전기학회 제56회 하계학술대회"
+        publisher: "The 56th KIEE Summer Conference 2025 (대한전기학회)"
         date: 2025-07
         url: "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12351807"
         summary: "공동저자"
@@ -99,28 +107,28 @@ cv:
         summary: "제1저자"
 
     Honors and Awards:
-      - title: Best Paper Award
-        awarder: ASK 2025 (Annual Symposium of KIPS)
-        date: 2025-05
       - title: Finalist (본선 진출, 30/198)
         awarder: IITP ICT Challenge
         date: 2025-07
         summary: VLA 기반 사족보행 험지·동작장애 극복 사업계획.
+      - title: Best Paper Award
+        awarder: ASK 2025 (Annual Symposium of KIPS)
+        date: 2025-05
       - title: Excellence Award (2nd), SEEK Square
         awarder: Dept. of Electronic Engineering, KNU
         date: 2024-11
         summary: 시스템에어컨 시계열 분석, 실내기 공간일치도 90%+ 도출.
       - title: National Science & Engineering Scholarship (장학금)
         awarder: National Research Foundation of Korea
-        summary: 학부 전 기간 수혜.
+        date: "2019.03 – 2025.02"
 
     Skills:
       - name: Programming
         keywords: "Python (primary), C / Assembly (embedded, NXP S32K144)"
       - name: AI / ML
-        keywords: "PyTorch, Selective State Space Model (Mamba), Imitation Learning, Reinforcement Learning, VLA / VLM, Fuzzy Logic, Time-series"
+        keywords: "PyTorch, Imitation Learning, VLA (LeRobot, ACT, OpenPi, GR00T), Transformer, Diffusion Model, Selective State Space Model (Mamba), Reinforcement Learning, VLM, Fuzzy Logic, Time-series"
       - name: Robotics
-        keywords: "ROS, Unitree Aliengo / Go2, Franka Research 3, Open Duck Mini, SO-ARM, UMI, Sim-to-Real, State Estimation"
+        keywords: "ROS 2, Unitree Aliengo / Go2, Franka Research 3, Open Duck Mini, SO-ARM, UMI, Sim-to-Real, State Estimation"
       - name: Autonomous Driving / Embedded
         keywords: "CAN, SDV (Zonal/HPC), MIPI CSI, YOLOv8"
       - name: Infrastructure

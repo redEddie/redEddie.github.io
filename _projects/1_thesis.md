@@ -3,7 +3,7 @@ layout: page
 title: 석사 학위논문 — Selective SSM 기반 모방학습
 description: Selective State Space Model-based Efficient Imitation Learning for Generalizable Robot Manipulation · 2026년 8월
 img: assets/projects/thesis/fig-overall.png
-importance: 1
+importance: 2
 category: research
 tags: [VLA, Mamba2, Attention, Self-supervised, PyTorch]
 related_publications: false
@@ -31,7 +31,7 @@ related_publications: false
   }
 </style>
 
-진행 중인 석사 학위논문 연구입니다.
+경북대학교 석사 학위논문(2026.08)입니다. [dCollection](https://www.dcollection.net/handler/knu/000000113705)
 
 > **Selective State Space Model-based Efficient Imitation Learning for Generalizable Robot Manipulation**
 
@@ -79,6 +79,17 @@ Transformer 어텐션은 시퀀스 길이에 대해 이차(quadratic) 비용을 
 | 비전 인코더 DINOv3-B (frozen) | 86M |
 | 텍스트 인코더 EmbeddingGemma (frozen) | 300M |
 | **전체 VLA 파이프라인** | **~574M** |
+
+### 추론 효율
+
+같은 조건에서 액션 청크 1회를 추론하는 데 걸리는 시간을 π₀와 비교했습니다. π₀ 대비 약 **6배 빠르게** 추론합니다.
+
+| 모델 | 파라미터 | 추론 시간 (액션 청크 1회) | GPU 메모리 |
+|---|---:|---:|---:|
+| **Ours** | ~574M | **~20 ms** | ~3 GB |
+| π₀ | ~3.3B | ~120 ms | — |
+
+<div class="caption">측정 조건: RTX PRO 6000 · 배치 1 · 카메라 2대(224×224) · 액션 청크 10 · Flow Matching 10 스텝. GPU 메모리는 PyTorch 측정값, π₀ 파라미터는 π₀ 논문 기준.</div>
 
 ## Mamba는 2D 이미지를 이해하는가
 
@@ -207,20 +218,41 @@ LIBERO-Spatial에서 객체의 공간 배치를 바꾼 **swap** 조건과 **원�
 | **Ours (Full)** | 55 | 0 | 84 | **14** |
 | Ours (w/o SSL) | 45 | 0 | 75 | 7 |
 
+## 기술적 난제와 해결
+
+### 1. RoPE 없는 Mamba-2에서 위치 신호와 이미지 신호의 균형
+
+- **현상·원인**: Transformer와 달리 Mamba-2에는 RoPE 같은 위치 인코딩 장치가 없어, 위치 임베딩을 이미지 임베딩에 더해야 했습니다. 위치 신호가 이미지 신호에 묻히지도, 이미지를 압도하지도 않도록 크기를 맞추는 것이 관건이었습니다.
+- **시도**: 위치 임베딩에 학습 가능한 게이트를 두었으나, 게이트가 초기값에 머물거나 위치 임베딩의 크기를 키워 이미지 신호를 압도하는 방향으로 학습됐습니다.
+- **해결**: 게이트를 학습시키는 대신 스케일을 실험적으로 탐색해 가장 성능이 높았던 값으로 고정했습니다. 여기에 양방향 Mamba와 자기지도 학습(SSL)을 결합해 적은 데이터로도 공간 구조를 학습하도록 설계했습니다.
+
+### 2. 행동 헤드의 기울기에 의한 멀티모달 표현 훼손
+
+- **현상·원인**: 학습 loss는 충분히 낮아졌지만 성공률이 기대만큼 오르지 않았습니다. Flow Matching 행동 헤드의 큰 역전파 기울기가 멀티모달 Mamba 인코더로 전달되면서, 사전학습 표현이 가진 일반화 능력이 훼손된 것으로 판단했습니다. 행동 학습이 VLM의 일반화 능력을 잊게 만든다는 [*Knowledge Insulating VLA*](https://arxiv.org/abs/2505.23705) (Driess et al., 2025)의 지적과 같은 맥락입니다.
+- **해결**: 학습을 두 단계로 분리했습니다. Stage 1에서 SSL loss로 멀티모달 표현을 학습하고, Stage 2에서 행동 헤드를 학습해 앞 단계의 표현을 보존했습니다.
+- **검증**: 같은 장면에 다른 지시문을 주는 LIBERO-PRO Task 교란에서, 다른 공개 VLA(0–10%) 대비 **10–53%**의 성공률을 기록해 지시문 이해 능력이 향상됐음을 확인했습니다.
+
+### 3. 손목 카메라 편향과 행동 암기
+
+- **현상·원인**: 정책이 3인칭(agent) 카메라를 무시하고 손목(wrist) 카메라에만 의존하면서, 장면을 파악하기보다 행동을 외우는 경향이 나타났습니다.
+- **해결**: 이미지를 복원하는 SSL loss를 추가해 agent 카메라 정보를 참조하도록 강제했습니다.
+- **검증**: SSL을 뺀 절제 실험 대비 LIBERO 평균 성공률이 **94.50% → 97.25%**로 향상됐고, Task 교란 성능도 함께 개선됐습니다(LIBERO-10 기준 7% → 14%).
+
 ## Discussion
 
 **확인한 점**
 
-- Mamba 기반 구조로도 VLA를 충분히 구성할 수 있으며, 설계와 학습을 적절히 가져가면 기존 Transformer 기반 모델에 필적하는 성능을 보입니다.
-- Mamba는 멀티모달 처리에서도 안정적으로 동작합니다.
+- 양방향 구조와 멀티모달 융합 설계를 통해 Mamba 기반 구조로도 기존 Transformer 기반 VLA에 필적하는 성능을 낼 수 있음을 확인했습니다.
+- 비전·언어·로봇 상태를 하나의 Selective SSM 시퀀스로 안정적으로 처리할 수 있었습니다.
 
 **한계**
 
-- 자기지도 학습(SSL)을 도입했으나, action 생성 단계에는 효과적으로 적용하기 어려웠습니다.
+- SSL은 멀티모달 표현 학습에는 효과가 있었으나, 행동 생성 단계에 직접 적용하기는 구조적으로 어려웠습니다.
+- Mamba-2는 채널이 깊거나 비전 토큰 수가 많아지면 이미지 이해 성능이 떨어지는 경향이 있어, 비교적 작은 비전 인코더(DINOv3-B)를 선택해야 했습니다.
 
 **후속 연구 방향**
 
-- 멀티모달 처리 단계에 SSL을 결합하는 방향이 유망합니다.
-- 추론 시 action 생성을 end-to-end로 묶기보다 분리해 설계하는 편이 낫다고 판단했으며, 이는 **월드 모델(world model)** 이 주목받는 이유와 맞닿아 있습니다.
+- **실로봇 적용**: Franka FR3 배포 파이프라인([매니퓰레이션 프로젝트](/projects/2_manipulation/))에서 학위논문 모델의 실로봇 구동을 확인했으며, 정량적 성공률 평가는 진행 중입니다.
+- **행동 학습에 의한 일반화 망각**: 난제 2에서 확인한 현상, 즉 Flow Matching 행동 학습이 사전학습 표현의 일반화 능력을 훼손하는 문제를 후속 연구로 이어가고 있습니다.
 
 **사용 기술**: PyTorch · Selective SSM(Mamba) · Imitation Learning · 대규모 학습 인프라

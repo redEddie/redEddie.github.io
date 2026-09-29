@@ -3,7 +3,7 @@ layout: page
 title: PnP 기반 실외 3D 위치 추정
 description: 컴퓨터비전특론 과제 — 단일 이미지와 랜드마크 좌표로 지구 좌표계 기준 카메라 포즈 추정 · 2025.06.08
 img: assets/projects/pnp/pnp-cover.jpg
-importance: 8
+importance: 2
 category: coursework
 tags: [Computer Vision, PnP, RANSAC, Camera Calibration, OpenCV]
 related_publications: false

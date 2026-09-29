@@ -186,6 +186,14 @@
     <div class="periodical">
       {{ entry.note | strip }}
     </div>
+    {% if entry.sum_problem %}
+      <!-- 로컬 추가: 국문 핵심 요약(문제·방법·효과) -->
+      <div class="pub-summary">
+        <p><span class="pub-summary-label">문제</span>{{ entry.sum_problem }}</p>
+        <p><span class="pub-summary-label">방법</span>{{ entry.sum_method }}</p>
+        <p><span class="pub-summary-label">효과</span>{{ entry.sum_effect }}</p>
+      </div>
+    {% endif %}
 
     <!-- Links/Buttons -->
     <div class="links">
